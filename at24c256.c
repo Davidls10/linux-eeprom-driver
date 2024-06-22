@@ -13,13 +13,7 @@ static struct i2c_adapter *at24c256_i2c_adapter = NULL;
 static struct i2c_client *at24c256_i2c_client = NULL;
 
 static int byte_write(unsigned char *buf, unsigned int len) {
-	struct i2c_msg msg;
-	msg.addr = DEVICE_ADDRESS;
-	msg.flags = 0;
-	msg.len = 3;
-	msg.buf = {0b00000000, 0b00000001, 0b10101011};
-
-	int ret = i2c_transfer(at24c256_i2c_client->adapter, &msg, 3);
+	int ret = i2c_transfer(at24c256_i2c_client, buf, 3);
 	printk(KERN_ALERT "Write return: %d\n", ret);
 	return ret;
 }
@@ -74,25 +68,14 @@ static int __init at24c256_driver_init(void) {
             	i2c_put_adapter(at24c256_i2c_adapter);
     	}
 
-	//unsigned char buf_write_test[4] = {0};
-	//buf_write_test[0] = AT24C256_WRITE_CMD;
-	//buf_write_test[1] = 0b00000000;
-	//buf_write_test[2] = 0b00000001;
-       	//buf_write_test[3] = 0b10101011;
-	//byte_write(buf_write_test, 3);
-	//byte_write(buf_write_test, 3);
+	unsigned char buf_write_test[3] = {0};
+	buf_write_test[0] = 0b00000000;
+	buf_write_test[1] = 0b00000001;
+    buf_write_test[2] = 0b10101011;
+	byte_write(buf_write_test, 3);
 
-        unsigned char buf_read_test[3] = {0};
-        buf_read_test[0] = AT24C256_WRITE_CMD;
-        buf_read_test[1] = 0b00000000;
-        buf_read_test[2] = 0b00000011;
-        unsigned char out_buf_read_test[2] = {0};
-        out_buf_read_test[0] = AT24C256_READ_CMD;
-	byte_write(buf_read_test, 3);
-        byte_random_read(out_buf_read_test, 2);
-
-        printk(KERN_ALERT "AT24C256 driver added");
-        return ret;
+    printk(KERN_ALERT "AT24C256 driver added");
+    return ret;
 }
 
 static void __exit at24c256_driver_exit(void) {
