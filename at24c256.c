@@ -2,6 +2,7 @@
 #include <linux/module.h>
 #include <linux/i2c.h>
 #include <linux/kernel.h>
+
 #define I2C_BUS_AVAILABLE 1
 #define DEVICE_ADDRESS 0x50
 
