@@ -1,0 +1,1 @@
+savedcmd_/home/david/Codes/linux-eeprom-driver/at24c256.ko := ld -r -EL  -maarch64elf -z noexecstack --no-warn-rwx-segments --build-id=sha1  -T arch/arm64/module.lds -o /home/david/Codes/linux-eeprom-driver/at24c256.ko /home/david/Codes/linux-eeprom-driver/at24c256.o /home/david/Codes/linux-eeprom-driver/at24c256.mod.o;  true

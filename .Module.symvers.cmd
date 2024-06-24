@@ -1,0 +1,1 @@
+savedcmd_/home/david/Codes/linux-eeprom-driver/Module.symvers :=  scripts/mod/modpost -M -m -a      -o /home/david/Codes/linux-eeprom-driver/Module.symvers -T /home/david/Codes/linux-eeprom-driver/modules.order -i Module.symvers -e 
