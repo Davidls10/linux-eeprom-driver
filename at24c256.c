@@ -152,7 +152,7 @@ static int sequential_read(unsigned char *buffer, unsigned char *read_data, unsi
 
 static int page_write(unsigned char *buffer, unsigned int len) {
 	if (len > 66) {
-		printk(KERN_ALERT "Write more than 64 data bytes in one burst not permitted!");
+		printk(KERN_ALERT "Writing more than 64 data bytes in one burst not permitted!");
 		return -1;
 	}
 
